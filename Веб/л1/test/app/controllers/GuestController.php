@@ -1,5 +1,5 @@
 <?php
-class TestController {
+class GuestController {
     public function __construct()
     {
         $this->view = new View();
@@ -12,11 +12,11 @@ class TestController {
         {
             var_dump($_POST);
 
-            $this->model->validator->SetRule('name', 'isNotEmpty');
-            $this->model->validator->SetRule('surname', 'isNotEmpty');
-            $this->model->validator->SetRule('thirdName', 'isNotEmpty');
-            $this->model->validator->SetRule('e-mail', 'isEmail');
-            $this->model->validator->SetRule('text', 'isNotEmpty');
+            $this->model->validator->SetRule('name', 'isName');
+            $this->model->validator->SetRule('group', 'isNotEmpty');
+            $this->model->validator->SetRule('answer1', 'isNotEmpty');
+            $this->model->validator->SetRule('answer2', 'isNotEmpty');
+            $this->model->validator->SetRule('answer3', 'isNotEmpty');
 
             $this->model->validator->validate($_POST);
 
@@ -27,8 +27,12 @@ class TestController {
 
             else
             {
- 		        $model =[
+		$filteredPostData = array_slice($_POST, 2);
+	 	var_dump($filteredPostData );
+                $verificationResults = $this->model->validator->verifyAnswers($filteredPostData);
+ 		$model = [
                     'errors' => $this->model->validator->showErrors(),
+                    'results' => $this->model->validator->showResults($verificationResults)
                 ];
             }
         }
