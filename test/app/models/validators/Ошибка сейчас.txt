@@ -1,0 +1,1 @@
+Когда наследовали CustomFormValidation от FormValidation и не использовали в принципе ResultVerification всё было хорошо

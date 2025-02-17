@@ -1,6 +1,10 @@
 <?php
 class TestController {
-
+    private $correctAnswers = [
+        'question1' => 'answer1', 
+        'question2' => ['answer2a', 'answer2b'],
+        'question3' => 'answer3',
+    ];
     public function __construct()
     {
         $this->view = new View();
@@ -28,11 +32,14 @@ class TestController {
 
             else
             {
-                //...
+		$filteredPostData = array_slice($_POST, 2);
+	 	var_dump($filteredPostData );
+                $verificationResults = $this->model->validator->verifyAnswers($filteredPostData);
+ 		$model = [
+                    'errors' => $this->model->validator->showErrors(),
+                    'results' => $this->model->validator->showResults($verificationResults)
+                ];
             }
-            $model = [
-                'errors' => $this->model->validator->showErrors()
-            ];
         }
         else
         {

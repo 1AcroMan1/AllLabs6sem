@@ -4,7 +4,6 @@
 <meta charset="utf-8">
     <link href="/public/assets/css/styles.css" rel="stylesheet">
     <script src="/public/assets/js/jquery-3.7.1.min.js"></script>
-    <script src="/public/assets/js/FormsChecker.js" defer></script>
 <title> Высшая математика. Тест </title>
 <h class = "MiddleText">Тест по высшей математике</h>
 <p class = "invEle">1</p>
@@ -37,29 +36,29 @@
         <div class="form-tooltip" data-tooltip="Выберите ответ">Вопрос №2</div>
         <div>Какой формы бывают матрицы</div>
         <label>
-            <input type="checkbox" name="answer2" value="squ"> Квадратные
+            <input type="checkbox" name="answer2[]" value="squ"> Квадратные
         </label>
         <br>
         <label>
-            <input type="checkbox" name="answer2" value="rec"> Прямоугольные
+            <input type="checkbox" name="answer2[]" value="rec"> Прямоугольные
         </label>
         <br>
         <label>
-            <input type="checkbox" name="answer2" value="one"> Единичные
+            <input type="checkbox" name="answer2[]" value="one"> Единичные
         </label>
         <br>
         <label>
-            <input type="checkbox" name="answer2" value="nul"> Нулевые
+            <input type="checkbox" name="answer2[]" value="nul"> Нулевые
         </label>
         <br>
         <label>
-            <input type="checkbox" name="answer2" value="bin"> Бинарные
+            <input type="checkbox" name="answer2[]" value="bin"> Бинарные
         </label>
 
         <p class="invEle">1</p>
         <div>Вопрос №3</div>
         <div class="form-tooltip" data-tooltip="Выберите 2 формулы через ctrl">Выберите неверную формулу</div>
-        <select id="groups" name="answer3" multiple>
+        <select id="groups" name="answer3[]" multiple>
             <optgroup label="Свойства матриц">
                 <option value="11">A*(B*C) = (A*B)*C</option>
                 <option value="12">(A+B)*C = A*C+B*C</option>
@@ -76,6 +75,12 @@
         <?php if (!empty($errors)) : ?>
             <div class="error-messages" id = "error-messages">
                 <?php echo $errors; ?>
+            </div>
+        <?php endif; ?>
+
+	<?php if (!empty($results)) : ?>
+            <div class="result-messages" id = "result-messages">
+                <?php echo $results; ?>
             </div>
         <?php endif; ?>
 

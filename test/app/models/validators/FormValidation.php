@@ -77,7 +77,7 @@ class FormValidation {
 
         $parts = explode(" ", $data);
         if (count($parts) !== 3) {
-            return 'ФИО должно состоять из 3 слов и содержать только букв';
+            return 'ФИО должно состоять из 3 слов и содержать только буквы';
         }
         else
         {
